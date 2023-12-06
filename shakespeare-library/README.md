@@ -1,30 +1,24 @@
-# React + TypeScript + Vite
+# Project description
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+*Creare un'applicazione frontend con ReactJS per la gestione di una biblioteca.*
 
-Currently, two official plugins are available:
+ *\- Menu contenente le seguenti voci: Dashboard, Cedi, Prendi, Utenti*
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*- Dashboard, una tabella che mostri tutti i libri presenti in  biblioteca, prevedere un tasto azioni con un pulsante elimina libro ed  un pulsante per dettaglio che apre un popup con un form che ripresenta i dettagli del libro e la possibilità di modificare i dettagli.*
 
-## Expanding the ESLint configuration
+*- La pagina Cedi, conterrà un form con i dati del libro da cedere (es: codice, titolo, autore ecc..), e una select* 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+ *con ricerca automatica per selezionare  l'utente a chi assegnare il libro, nel caso in cui non sia presente  l'utente deve comparire che l'utente   non è stato trovato, infatti  prevedere*
 
-- Configure the top-level `parserOptions` property like this:
+ *anche un pulsante che porterà alla pagina Utenti.*
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+*- Pagina prendi: piccolo form per inserimento  codice libro (simulazione scansione codice a barre), che all'inserimento del codice farà apparire  un riepilogo sottostante con i dati del  libro e l'utente.*
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+*- Pagina utenti: Lista di tutti gli utenti con  dei filtri per ricercare gli utenti, e un pulsante aggiungi utente che  al click apre una finestra popup   con un form per aggiungere  l'utente (dati anagrafici).*
+
+*Tutta la gestione dovrà avvenire tramite dati mock simulando le chiamate al backend.
+ Per i form di creazione e modifica basterà fermarsi alle fetch e limitandosi alla preparazione dei dati da inviare.*
+
+*In alternativa sarà possibile usare qualsiasi  tool online per simulare chiamate REST API, quindi senza utilizzo di  backend locale.*
+
+*Cercare di suddividere il progetto in più componenti.*

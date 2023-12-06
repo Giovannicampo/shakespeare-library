@@ -1,34 +1,57 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import { Button } from "@mui/material";
-import "./App.css";
+import "./assets/css/App.css";
+import HeaderBar from "./Header";
+import logo from "./assets/pics/logodark.png";
+import Menu from "./Drawer";
+import { Container, Divider } from "@mui/material";
+import Box from "@mui/material/Box";
+import Toolbar from '@mui/material/Toolbar';
+import Books from "./Books";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [context, setContext] = useState("Dashboard");
+  let ContextDiv;
+
+  switch (context) {
+    case "Dashboard":
+      ContextDiv = <Books></Books>;
+      break;
+    case "Cedi":
+      break;
+    case "Prendi":
+      break;
+    case "Utenti":
+      break;
+  }
+
+  const handleContext = function (c: string): void {
+    setContext((context) => (context = c));
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <HeaderBar logo={logo} context={context}></HeaderBar>
+      <Divider></Divider>
+      <Box sx={{ display: "flex" }}>
+        <Menu handleContext={handleContext}></Menu>
+        <Box
+          component="main"
+          sx={{
+            backgroundColor: (theme) =>
+              theme.palette.mode === 'light'
+                ? theme.palette.grey[400]
+                : theme.palette.grey[900],
+            flexGrow: 1,
+            height: '100vh',
+            overflow: 'auto',
+          }}
+        >
+          <Toolbar />
+          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+            {ContextDiv}
+          </Container>
+        </Box>
+      </Box>
     </>
   );
 }
