@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 import { styled } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
-import Toolbar from '@mui/material/Toolbar';
+import Toolbar from "@mui/material/Toolbar";
 import { IconButton } from "@mui/material";
-import MenuIcon from '@mui/icons-material/Menu';
-import Divider from '@mui/material/Divider';
-import List from '@mui/material/List';
+import MenuIcon from "@mui/icons-material/Menu";
+import Divider from "@mui/material/Divider";
+import List from "@mui/material/List";
 import MainListItems from "./listItems";
+import { CONTEXT } from "./App";
 
 const drawerWidth: number = 400;
 
@@ -38,18 +39,18 @@ const Drawer = styled(MuiDrawer, {
   },
 }));
 
-export default function Menu(props: any) {
-    const [open, setOpen] = useState(true);
-    const toggleDrawer = () => {
-        setOpen(!open);
-    };
+export default function Menu(props: any): ReactElement {
+  const [open, setOpen] = useState(true);
+  const toggleDrawer = () => {
+    setOpen(!open);
+  };
 
-    const handleContext = function(c: string) : void {
-        props.handleContext(c);
-    }
-    return (
-        <>
-        <Drawer variant="permanent" open={open}>
+  const handleContext = function (context: CONTEXT): void {
+    props.handleContext(context);
+  };
+  return (
+    <>
+      <Drawer variant="permanent" open={open}>
         <Toolbar
           sx={{
             display: "flex",
@@ -59,15 +60,15 @@ export default function Menu(props: any) {
           }}
         >
           <IconButton onClick={toggleDrawer}>
-            <MenuIcon style={{color:'white'}} />
+            <MenuIcon style={{ color: "white" }} />
           </IconButton>
         </Toolbar>
         <Divider />
         <List component="nav">
-          <MainListItems handleContext = {handleContext}></MainListItems>
+          <MainListItems handleContext={handleContext}></MainListItems>
           <Divider sx={{ my: -0.5 }} />
         </List>
       </Drawer>
-        </>
-    )
+    </>
+  );
 }

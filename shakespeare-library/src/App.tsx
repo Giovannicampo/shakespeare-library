@@ -1,31 +1,38 @@
-import { useState } from "react";
+import { useState, ReactElement } from "react";
 import "./assets/css/App.css";
 import HeaderBar from "./Header";
 import logo from "./assets/pics/logodark.png";
 import Menu from "./Drawer";
 import { Container, Divider } from "@mui/material";
 import Box from "@mui/material/Box";
-import Toolbar from '@mui/material/Toolbar';
-import Books from "./Books";
+import Toolbar from "@mui/material/Toolbar";
+import Dashboard from "./Dashboard/Dashboard";
 
-function App() {
-  const [context, setContext] = useState("Dashboard");
+export const enum CONTEXT {
+  DASHBOARD = "Dashboard",
+  CEDI = "Cedi",
+  PRENDI = "Prendi",
+  UTENTI = "Utenti",
+}
+
+function App(): ReactElement {
+  const [context, setContext] = useState(CONTEXT.DASHBOARD);
   let ContextDiv;
 
   switch (context) {
-    case "Dashboard":
-      ContextDiv = <Books></Books>;
+    case CONTEXT.DASHBOARD:
+      ContextDiv = <Dashboard></Dashboard>;
       break;
-    case "Cedi":
+    case CONTEXT.CEDI:
       break;
-    case "Prendi":
+    case CONTEXT.PRENDI:
       break;
-    case "Utenti":
+    case CONTEXT.UTENTI:
       break;
   }
 
-  const handleContext = function (c: string): void {
-    setContext((context) => (context = c));
+  const handleContext = function (context: CONTEXT): void {
+    setContext((currContext) => (currContext = context));
   };
 
   return (
@@ -38,16 +45,16 @@ function App() {
           component="main"
           sx={{
             backgroundColor: (theme) =>
-              theme.palette.mode === 'light'
+              theme.palette.mode === "light"
                 ? theme.palette.grey[400]
                 : theme.palette.grey[900],
             flexGrow: 1,
-            height: '100vh',
-            overflow: 'auto',
+            height: "100vh",
+            overflow: "auto",
           }}
         >
           <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+          <Container maxWidth="lg" sx={{ mt: 4, mb: 4, overflow: "auto" }}>
             {ContextDiv}
           </Container>
         </Box>

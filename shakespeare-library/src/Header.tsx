@@ -1,6 +1,7 @@
 import { IconButton } from "@mui/material";
 import { styled } from "styled-components";
-import PersonIcon from '@mui/icons-material/Person';
+import PersonIcon from "@mui/icons-material/Person";
+import { ReactElement } from "react";
 
 const Header = styled.div`
   display: flex;
@@ -34,7 +35,7 @@ const Icon = styled.div`
   align-self: center;
 `;
 
-export default function HeaderBar(props: any) {
+export default function HeaderBar(props: any): ReactElement {
   return (
     <>
       <Header>
@@ -45,7 +46,9 @@ export default function HeaderBar(props: any) {
           <Context>{props.context}</Context>
           <Icon>
             <IconButton>
-              <PersonIcon style={{height: '1em', color: 'white'}}></PersonIcon>
+              <PersonIcon
+                style={{ height: "1em", color: "white" }}
+              ></PersonIcon>
             </IconButton>
           </Icon>
         </ToolBar>

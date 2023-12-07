@@ -4,32 +4,20 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Title from "./Title";
+import Title from "../Title";
+import "../assets/css/App.css";
+import { rows } from "./BooksData";
 
-// Generate Order Data
-function createData(
-  id: number,
-  name: string,
-  author: string,
-  available: boolean,
-  user?: string,
-) {
-  return { id, name, author, available, user };
+// function preventDefault(event: React.MouseEvent) {
+//   event.preventDefault();
+// }
+
+const enum OPTION {
+  YES = "yes",
+  NO = "no",
 }
 
-const rows = [
-  createData(0, "Il miglio verde", "Stephen King", true),
-  createData(1, "Io, Robot", "Isaac Asimov", true),
-  createData(2, `Cent'anni di solitudine`, "Gabriel Garcia Marquez", true),
-  createData(3, "I fiori del male", "Charles Baudelaire", true),
-  createData(4, "1984", "George Orwell", true),
-];
-
-function preventDefault(event: React.MouseEvent) {
-  event.preventDefault();
-}
-
-export default function Books() {
+export default function BooksList(): React.ReactElement {
   return (
     <React.Fragment>
       <Title>Books</Title>
@@ -39,17 +27,19 @@ export default function Books() {
             <TableCell>ID</TableCell>
             <TableCell>Name</TableCell>
             <TableCell>Author</TableCell>
+            <TableCell>Genre</TableCell>
             <TableCell align="right">Availability</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <TableRow key={row.id}>
+            <TableRow className="app-button" key={row.id}>
               <TableCell>{row.id}</TableCell>
               <TableCell>{row.name}</TableCell>
               <TableCell>{row.author}</TableCell>
+              <TableCell>{row.genre}</TableCell>
               <TableCell align="right">{`${
-                row.available ? "yes" : "no"
+                row.available ? OPTION.YES : OPTION.NO
               }`}</TableCell>
             </TableRow>
           ))}
