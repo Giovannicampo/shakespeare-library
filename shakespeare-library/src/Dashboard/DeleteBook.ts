@@ -1,13 +1,13 @@
 import { Book } from "./BooksData";
-import { setRow } from "./BooksData";
+import { deleteRow } from "./BooksData";
 
-export default function saveBookData(book: Book) {
-  // update mock data
-  setRow(book.id, book);
+export default function deleteBook(book: Book) {
+    // edit mock data
+    deleteRow(book.id);
 
-  // call PATCH, but it doesn't work
-  fetch(`http://localhost:3000/books/updateById/${book.id}`, {
-    method: "PATCH",
+    // call DELETE, but it doesn't work
+    fetch(`http://localhost:3000/books/updateById/${book.id}`, {
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       "X-RapidAPI-Key": "your-api-key",

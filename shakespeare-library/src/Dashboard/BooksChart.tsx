@@ -12,9 +12,9 @@ const listGenres = [
 ];
 
 function updateList(): void {
-  listGenres.forEach((g) =>
-    rows.filter((r) => r.genre === g.label).forEach(() => g.value++),
-  );
+  for (const g of listGenres) {
+    g.value += rows.filter((r) => r.genre === g.label).length;
+  }
 }
 
 updateList();

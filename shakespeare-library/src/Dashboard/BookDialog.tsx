@@ -9,11 +9,14 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { MenuItem } from "@mui/material";
 import { OPTION } from "./BooksList";
 import saveBookData from "./SaveBookData";
+import deleteBook from "./DeleteBook";
+import { Book } from "./BooksData";
 
 interface TextFieldProps {
   readonly id: string;
   readonly label: string;
   readonly defaultValue: string;
+  readonly handler: React.ChangeEventHandler;
 }
 
 const CustomTextField = function (props: TextFieldProps): React.ReactElement {
@@ -26,12 +29,14 @@ const CustomTextField = function (props: TextFieldProps): React.ReactElement {
       fullWidth
       variant="outlined"
       defaultValue={props.defaultValue}
+      onChange={props.handler}
     />
   );
 };
 
 interface SelectProps {
   readonly defaultvalue: boolean;
+  readonly handler: React.ChangeEventHandler;
 }
 
 const SelectAvailable = function (props: SelectProps): React.ReactElement {
@@ -42,6 +47,7 @@ const SelectAvailable = function (props: SelectProps): React.ReactElement {
       label="Availability"
       defaultValue={props.defaultvalue}
       sx={{ marginTop: "0.5em", minWidth: "8em" }}
+      onChange={props.handler}
     >
       <MenuItem key={true as any} value={true as any}>
         {OPTION.YES}
@@ -53,7 +59,34 @@ const SelectAvailable = function (props: SelectProps): React.ReactElement {
   );
 };
 
-export default function BookDialog(props: any) {
+interface BookProps {
+  readonly open: boolean;
+  readonly handleClose: () => void;
+  readonly book: Book;
+}
+
+export default function BookDialog(props: BookProps) {
+  let currentBook: Book = {
+    id: props.book.id,
+    name: props.book.name,
+    author: props.book.author,
+    genre: props.book.genre,
+    available: props.book.available,
+  };
+
+  function setName(event: HTMLInputElement): void {
+    currentBook.name = event.value;
+  }
+  function setAuthor(event: HTMLInputElement): void {
+    currentBook.author = event.value;
+  }
+  function setGenre(event: HTMLInputElement): void {
+    currentBook.genre = event.value;
+  }
+  function setAvailable(event: HTMLInputElement): void {
+    currentBook.available = event.value as any;
+  }
+
   return (
     <React.Fragment>
       <Dialog open={props.open} onClose={props.handleClose}>
@@ -66,32 +99,52 @@ export default function BookDialog(props: any) {
             id={"name"}
             label={"Name"}
             defaultValue={props.book.name}
+            handler={(e) => {
+              setName(e.target as HTMLInputElement);
+            }}
           ></CustomTextField>
           <CustomTextField
             id={"author"}
             label={"Author"}
             defaultValue={props.book.author}
+            handler={(e) => {
+              setAuthor(e.target as HTMLInputElement);
+            }}
           ></CustomTextField>
           <CustomTextField
             id={"genre"}
             label={"Genre"}
             defaultValue={props.book.genre}
+            handler={(e) => {
+              setGenre(e.target as HTMLInputElement);
+            }}
           ></CustomTextField>
           <SelectAvailable
             defaultvalue={props.book.available}
+            handler={(e) => {
+              setAvailable(e.target as HTMLInputElement);
+            }}
           ></SelectAvailable>
         </DialogContent>
         <DialogActions>
           <Button onClick={props.handleClose}>Cancel</Button>
           <Button
-            onClick={(e: React.MouseEvent) => {
-              saveBookData(props.book); // to fix
+            onClick={() => {
+              saveBookData(currentBook);
               props.handleClose();
             }}
           >
             Save
           </Button>
-          <Button sx={{ color: "red" }}>Delete</Button>
+          <Button
+            sx={{ color: "red" }}
+            onClick={() => {
+              deleteBook(currentBook);
+              props.handleClose();
+            }}
+          >
+            Delete
+          </Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>

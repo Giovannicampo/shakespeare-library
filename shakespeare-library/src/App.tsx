@@ -45,9 +45,7 @@ function App(): ReactElement {
           component="main"
           sx={{
             backgroundColor: (theme) =>
-              theme.palette.mode === "light"
-                ? theme.palette.grey[400]
-                : theme.palette.grey[900],
+              theme.palette.grey[theme.palette.mode === "light" ? 400 : 900],
             flexGrow: 1,
             height: "100vh",
             overflow: "auto",

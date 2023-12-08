@@ -6,8 +6,11 @@ import * as React from "react";
 import { CONTEXT } from "./App";
 import CustomItem from "./CustomItem";
 
+export interface MainListProps {
+  readonly handleContext: (context: CONTEXT) => void;
+}
 
-export default function MainListItems(props: any): React.ReactElement {
+export default function MainListItems(props: MainListProps): React.ReactElement {
   return (
     <React.Fragment>
       <CustomItem handleContext={props.handleContext} context={CONTEXT.DASHBOARD}>

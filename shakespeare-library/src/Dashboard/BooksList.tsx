@@ -16,13 +16,13 @@ export const enum OPTION {
 
 export default function BooksList(): React.ReactElement {
   const [open, setOpen] = React.useState(false);
-  const [currentBook, setBook] = React.useState({});
+  const [currentBook, setBook] = React.useState(rows[0]);
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (): void => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = (): void => {
     setOpen(false);
   };
   return (
@@ -43,7 +43,7 @@ export default function BooksList(): React.ReactElement {
             <TableRow
               className="app-button"
               key={row.id}
-              onClick={(e: React.MouseEvent) => {
+              onClick={() => {
                 setBook(row);
                 handleClickOpen();
               }}

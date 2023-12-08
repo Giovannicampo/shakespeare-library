@@ -39,7 +39,11 @@ const Drawer = styled(MuiDrawer, {
   },
 }));
 
-export default function Menu(props: any): ReactElement {
+interface MenuProps {
+  readonly handleContext: (context: CONTEXT) => void;
+}
+
+export default function Menu(props: MenuProps): ReactElement {
   const [open, setOpen] = useState(true);
   const toggleDrawer = () => {
     setOpen(!open);

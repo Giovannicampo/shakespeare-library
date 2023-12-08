@@ -15,12 +15,12 @@ function createData(
   genre: string,
   available: boolean,
   user?: string,
-) {
+): Book {
   const book: Book = { id, name, author, genre, available, user };
   return book;
 }
 
-export const rows = [
+export let rows = [
   createData(0, "Il miglio verde", "Stephen King", "Thriller", true),
   createData(1, "Io, Robot", "Isaac Asimov", "Sci-Fi", true),
   createData(
@@ -47,4 +47,19 @@ export const rows = [
     "Fantasy",
     true,
   ),
+  createData(
+    8,
+    "Il Signore degli Anelli - Il mio Tesoro",
+    "J.R.R. Tolkien",
+    "Fantasy",
+    true,
+  )
 ];
+
+export function setRow(index: number, book: Book) {
+  rows[index] = book;
+}
+
+export function deleteRow(index: number) {
+  rows = rows.filter(r => r.id !== index)
+}
