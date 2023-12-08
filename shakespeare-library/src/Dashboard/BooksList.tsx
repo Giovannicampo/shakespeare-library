@@ -5,19 +5,26 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Title from "../Title";
+import BookDialog from "./BookDialog";
 import "../assets/css/App.css";
 import { rows } from "./BooksData";
 
-// function preventDefault(event: React.MouseEvent) {
-//   event.preventDefault();
-// }
-
-const enum OPTION {
+export const enum OPTION {
   YES = "yes",
   NO = "no",
 }
 
 export default function BooksList(): React.ReactElement {
+  const [open, setOpen] = React.useState(false);
+  const [currentBook, setBook] = React.useState({});
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <React.Fragment>
       <Title>Books</Title>
@@ -33,7 +40,14 @@ export default function BooksList(): React.ReactElement {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <TableRow className="app-button" key={row.id}>
+            <TableRow
+              className="app-button"
+              key={row.id}
+              onClick={(e: React.MouseEvent) => {
+                setBook(row);
+                handleClickOpen();
+              }}
+            >
               <TableCell>{row.id}</TableCell>
               <TableCell>{row.name}</TableCell>
               <TableCell>{row.author}</TableCell>
@@ -45,6 +59,11 @@ export default function BooksList(): React.ReactElement {
           ))}
         </TableBody>
       </Table>
+      <BookDialog
+        open={open}
+        handleClose={handleClose}
+        book={currentBook}
+      ></BookDialog>
     </React.Fragment>
   );
 }

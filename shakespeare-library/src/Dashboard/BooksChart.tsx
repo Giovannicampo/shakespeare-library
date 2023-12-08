@@ -8,6 +8,7 @@ const listGenres = [
   { id: 1, value: 0, label: "Narrativa" },
   { id: 2, value: 0, label: "Sci-Fi" },
   { id: 3, value: 0, label: "Saggistica" },
+  { id: 4, value: 0, label: "Fantasy" }
 ];
 
 function updateList(): void {
