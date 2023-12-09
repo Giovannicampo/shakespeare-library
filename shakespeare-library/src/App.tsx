@@ -7,6 +7,7 @@ import { Container, Divider } from "@mui/material";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Dashboard from "./Dashboard/Dashboard";
+import Users from "./Users/Users";
 
 export const enum CONTEXT {
   DASHBOARD = "Dashboard",
@@ -21,13 +22,14 @@ function App(): ReactElement {
 
   switch (context) {
     case CONTEXT.DASHBOARD:
-      ContextDiv = <Dashboard></Dashboard>;
+      ContextDiv = <Dashboard/>;
       break;
     case CONTEXT.CEDI:
       break;
     case CONTEXT.PRENDI:
       break;
     case CONTEXT.UTENTI:
+      ContextDiv = <Users/>;
       break;
   }
 

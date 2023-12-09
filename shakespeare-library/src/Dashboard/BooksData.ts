@@ -4,7 +4,6 @@ export interface Book {
   author: string;
   genre: string;
   available: boolean;
-  user?: string;
 }
 
 // Generate Book Data
@@ -13,14 +12,13 @@ function createData(
   name: string,
   author: string,
   genre: string,
-  available: boolean,
-  user?: string,
+  available: boolean
 ): Book {
-  const book: Book = { id, name, author, genre, available, user };
+  const book: Book = { id, name, author, genre, available };
   return book;
 }
 
-export let rows = [
+export let rows: Book[] = [
   createData(0, "Il miglio verde", "Stephen King", "Thriller", true),
   createData(1, "Io, Robot", "Isaac Asimov", "Sci-Fi", true),
   createData(
