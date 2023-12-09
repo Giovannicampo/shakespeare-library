@@ -19,7 +19,7 @@ interface TextFieldProps {
   readonly handler: React.ChangeEventHandler;
 }
 
-const CustomTextField = function (props: TextFieldProps): React.ReactElement {
+export const CustomTextField = function (props: TextFieldProps): React.ReactElement {
   return (
     <TextField
       autoFocus
@@ -29,6 +29,7 @@ const CustomTextField = function (props: TextFieldProps): React.ReactElement {
       fullWidth
       variant="outlined"
       defaultValue={props.defaultValue}
+      required
       onChange={props.handler}
     />
   );

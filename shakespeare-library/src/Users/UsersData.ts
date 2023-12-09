@@ -1,34 +1,45 @@
+import { v4 as uuidv4 } from "uuid";
+
 export interface User {
-  id: number;
+  id: string;
   name: string;
   surname: string;
-  age: number;
+  age: string;
   phoneNumber: string;
   booksIds: number[];
 }
 
 // Generate User Data
 function createData(
-  id: number,
   name: string,
   surname: string,
-  age: number,
+  age: string,
   phoneNumber: string,
-  booksIds: number[]
+  booksIds: number[],
 ): User {
+  const id = uuidv4();
   const user: User = { id, name, surname, age, phoneNumber, booksIds };
   return user;
 }
 
 export let users: User[] = [
-  createData(0, "Stefano", "Borzì", 26, "3004005678", []),
-  createData(1, "Matteo Jacopo", "Schembri", 26, "3012013456", []),
-  createData(2, "Alexia", "Gugliuzzo", 21, "3102101234", []),
-  createData(4, "Giovanni", "Fazio", 22, "3202207890", []),
-  createData(5, "Alessandro", "Lo Giudice", 21, "3012014567", []),
-  createData(6, "Giovanni", "Previtera", 22, "3402301234", []),
-  createData(7, "Alice", "Stiglione", 23, "3502001345", []),
-  createData(8, "Giulia", "Zuccarello", 22, "3502003123", []),
-  createData(9, "Venerando Pio", "Musumeci", 21, "3602004567", []),
-  createData(10, "Barbara", "Campo", 10, "3452341234", [])
+  createData("Stefano", "Borzì", "26", "3004005678", []),
+  createData("Matteo Jacopo", "Schembri", "26", "3012013456", []),
+  createData("Alexia", "Gugliuzzo", "2", "3102101234", []),
+  createData("Giovanni", "Fazio", "22", "3202207890", []),
+  createData("Alessandro", "Lo Giudice", "21", "3012014567", []),
+  createData("Giovanni", "Previtera", "22", "3402301234", []),
+  createData("Alice", "Stiglione", "23", "3502001345", []),
+  createData("Giulia", "Zuccarello", "22", "3502003123", []),
+  createData("Venerando Pio", "Musumeci", "21", "3602004567", []),
+  createData("Barbara", "Campo", "10", "3452341234", []),
+  createData("Emanuela", "Scavo", "21", "3602005678", []),
+  createData("Valeria", "Iacona", "19", "3901237845", []),
+  createData("Irene", "Petralia", "20", "3901238547", []),
+  createData("Isabella", "Nucifora", "39", "3804561234", []),
+  createData("Salvatore", "Campo", "56", "3603345234", []),
 ];
+
+export function addUser(u: User) {
+  users.push(u);
+}
