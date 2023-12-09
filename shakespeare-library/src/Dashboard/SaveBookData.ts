@@ -1,12 +1,13 @@
 import { Book } from "./BooksData";
 import { setRow } from "./BooksData";
+import { BASE_URL } from "../App";
 
 export default function saveBookData(book: Book) {
   // update mock data
   setRow(book.id, book);
 
   // call PATCH, but it doesn't work
-  fetch(`http://localhost:3000/books/updateById/${book.id}`, {
+  fetch(`${BASE_URL}:3000/books/updateById/${book.id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

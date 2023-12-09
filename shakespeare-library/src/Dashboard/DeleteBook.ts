@@ -1,12 +1,13 @@
 import { Book } from "./BooksData";
 import { deleteRow } from "./BooksData";
+import { BASE_URL } from "../App";
 
 export default function deleteBook(book: Book) {
     // edit mock data
     deleteRow(book.id);
 
     // call DELETE, but it doesn't work
-    fetch(`http://localhost:3000/books/updateById/${book.id}`, {
+    fetch(`${BASE_URL}/books/updateById/${book.id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

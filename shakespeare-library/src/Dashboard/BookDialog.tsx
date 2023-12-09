@@ -66,13 +66,7 @@ interface BookProps {
 }
 
 export default function BookDialog(props: BookProps) {
-  let currentBook: Book = {
-    id: props.book.id,
-    name: props.book.name,
-    author: props.book.author,
-    genre: props.book.genre,
-    available: props.book.available,
-  };
+  let currentBook: Book = props.book;
 
   function setName(event: HTMLInputElement): void {
     currentBook.name = event.value;

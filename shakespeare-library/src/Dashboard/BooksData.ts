@@ -12,7 +12,7 @@ function createData(
   name: string,
   author: string,
   genre: string,
-  available: boolean
+  available: boolean,
 ): Book {
   const book: Book = { id, name, author, genre, available };
   return book;
@@ -51,13 +51,14 @@ export let rows: Book[] = [
     "J.R.R. Tolkien",
     "Fantasy",
     true,
-  )
+  ),
 ];
 
-export function setRow(index: number, book: Book) {
+export function setRow(index: number, book: Book): void {
   rows[index] = book;
 }
 
-export function deleteRow(index: number) {
-  rows = rows.filter(r => r.id !== index)
+export function deleteRow(index: number): void {
+  const idx = rows.findIndex((row) => row.id === index);
+  rows.splice(idx, 1);
 }

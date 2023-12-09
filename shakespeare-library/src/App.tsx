@@ -9,6 +9,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Dashboard from "./Dashboard/Dashboard";
 import Users from "./Users/Users";
 
+export const BASE_URL = 'http://localhost:3000';
+
 export const enum CONTEXT {
   DASHBOARD = "Dashboard",
   CEDI = "Cedi",

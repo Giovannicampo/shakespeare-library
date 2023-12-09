@@ -15,7 +15,7 @@ interface FilterProps {
   readonly filter: () => void;
 }
 
-export default function FilterDialog(props: FilterProps) {
+export default function FilterDialog(props: FilterProps): React.ReactElement {
   return (
     <React.Fragment>
       <Dialog open={props.openFilter} onClose={props.handleCloseFilter}>
