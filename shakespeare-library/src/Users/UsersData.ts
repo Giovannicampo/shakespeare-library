@@ -6,7 +6,7 @@ export interface User {
   surname: string;
   age: string;
   phoneNumber: string;
-  booksIds: number[];
+  booksIds: string[];
 }
 
 // Generate User Data
@@ -15,7 +15,7 @@ function createData(
   surname: string,
   age: string,
   phoneNumber: string,
-  booksIds: number[],
+  booksIds: string[],
 ): User {
   const id = uuidv4();
   const user: User = { id, name, surname, age, phoneNumber, booksIds };

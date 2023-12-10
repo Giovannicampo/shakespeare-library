@@ -19,34 +19,34 @@ function createData(
 }
 
 export const rows: Book[] = [
-  createData("0", "Il miglio verde", "Stephen King", "Thriller", true),
-  createData("1", "Io, Robot", "Isaac Asimov", "Sci-Fi", true),
+  createData("TH00", "Il miglio verde", "Stephen King", "Thriller", true),
+  createData("SF00", "Io, Robot", "Isaac Asimov", "Sci-Fi", true),
   createData(
-    "2",
+    "NA00",
     `Cent'anni di solitudine`,
     "Gabriel Garcia Marquez",
     "Narrativa",
     true,
   ),
-  createData("3", "I fiori del male", "Charles Baudelaire", "Narrativa", true),
-  createData("4", "1984", "George Orwell", "Sci-Fi", true),
-  createData("5", "Il nome della rosa", "Umberto Eco", "Narrativa", true),
+  createData("NA01", "I fiori del male", "Charles Baudelaire", "Narrativa", true),
+  createData("SF01", "1984", "George Orwell", "Sci-Fi", true),
+  createData("NA02", "Il nome della rosa", "Umberto Eco", "Narrativa", true),
   createData(
-    "6",
+    "SA00",
     "Fisica quantistica per poeti",
     "Christopher Hill",
     "Saggistica",
     true,
   ),
   createData(
-    "7",
+    "FA00",
     "Il Signore degli Anelli - La Compagnia dell'anello",
     "J.R.R. Tolkien",
     "Fantasy",
     true,
   ),
   createData(
-    "8",
+    "FA01",
     "Il Signore degli Anelli - Il mio Tesoro",
     "J.R.R. Tolkien",
     "Fantasy",

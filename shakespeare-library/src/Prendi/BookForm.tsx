@@ -27,8 +27,8 @@ export default function BookForm(props: BookFormProps): ReactElement {
   return (
     <Grid item xs={12} md={6}>
       <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-        <Title>{`Book ${props.book.id}`}</Title>
-        <SubTitle>{props.book.name}</SubTitle>
+        <Title>{props.book.name}</Title>
+        <SubTitle>{props.book.id}</SubTitle>
         <SubTitle>{props.book.author}</SubTitle>
         <SubTitle>{props.book.genre}</SubTitle>
         <SubTitle>

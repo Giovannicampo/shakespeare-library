@@ -38,7 +38,7 @@ const SelectAvailable = function (props: SelectProps): React.ReactElement {
   );
 };
 
-interface BookProps {
+export interface BookProps {
   readonly open: boolean;
   readonly handleClose: () => void;
   readonly book: Book;

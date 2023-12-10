@@ -1,8 +1,8 @@
 import { ReactElement } from "react";
-import BooksList from "./BooksList";
 import TotalBooks from "./TotalBooks";
 import { Grid, Paper } from "@mui/material";
 import BooksChart from "./BooksChart";
+import BooksListForm from "./BooksList";
 
 export default function Dashboard(): ReactElement {
   return (
@@ -10,7 +10,7 @@ export default function Dashboard(): ReactElement {
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-            <BooksList />
+            <BooksListForm />
           </Paper>
         </Grid>
         <Grid item xs={12} md={4} lg={3}>

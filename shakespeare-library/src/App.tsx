@@ -9,6 +9,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Dashboard from "./Dashboard/Dashboard";
 import Users from "./Users/Users";
 import Prendi from "./Prendi/Prendi";
+import Cedi from "./Cedi/Cedi";
 
 export const BASE_URL = "http://localhost:3000";
 
@@ -28,6 +29,7 @@ function App(): ReactElement {
       ContextDiv = <Dashboard />;
       break;
     case CONTEXT.CEDI:
+      ContextDiv = <Cedi/>
       break;
     case CONTEXT.PRENDI:
       ContextDiv = <Prendi />;
