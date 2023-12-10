@@ -1,34 +1,70 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import { Button } from "@mui/material";
-import "./App.css";
+import { useState, ReactElement } from "react";
+import "./assets/css/App.css";
+import HeaderBar from "./Header";
+import logo from "./assets/pics/logodark.png";
+import Menu from "./Drawer";
+import { Container, Divider } from "@mui/material";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Dashboard from "./Dashboard/Dashboard";
+import Users from "./Users/Users";
+import Prendi from "./Prendi/Prendi";
+import Cedi from "./Cedi/Cedi";
 
-function App() {
-  const [count, setCount] = useState(0);
+export const BASE_URL = "http://localhost:3000";
+
+export const enum CONTEXT {
+  DASHBOARD = "Dashboard",
+  CEDI = "Lend",
+  PRENDI = "Take",
+  UTENTI = "User",
+}
+
+function App(): ReactElement {
+  const [context, setContext] = useState(CONTEXT.DASHBOARD);
+  let ContextDiv;
+
+  switch (context) {
+    case CONTEXT.DASHBOARD:
+      ContextDiv = <Dashboard />;
+      break;
+    case CONTEXT.CEDI:
+      ContextDiv = <Cedi/>
+      break;
+    case CONTEXT.PRENDI:
+      ContextDiv = <Prendi />;
+      break;
+    case CONTEXT.UTENTI:
+      ContextDiv = <Users />;
+      break;
+  }
+
+  const handleContext = function (context: CONTEXT): void {
+    setContext((currContext) => (currContext = context));
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <HeaderBar logo={logo} context={context}></HeaderBar>
+      <Divider></Divider>
+      <Box sx={{ display: "flex" }}>
+        <Menu handleContext={handleContext}></Menu>
+        <Box
+          component="main"
+          sx={{
+            backgroundColor: (theme) =>
+              theme.palette.grey[theme.palette.mode === "light" ? 400 : 900],
+            flexGrow: 1,
+            height: "100vh",
+            overflow: "auto",
+          }}
+        >
+          <Toolbar />
+          <Container maxWidth="lg" sx={{ mt: 4, mb: 4, overflow: "auto" }}>
+            {ContextDiv}
+          </Container>
+        </Box>
+      </Box>
     </>
   );
 }
