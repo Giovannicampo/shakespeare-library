@@ -1,5 +1,6 @@
 import MenuItem from "@mui/material/MenuItem";
 import { TextField } from "@mui/material";
+import { FIELD } from "./FilterSelector";
 
 interface FieldsSelectProps {
   readonly handler: React.ChangeEventHandler;
@@ -17,13 +18,13 @@ export const FieldsSelect = function (
       sx={{ marginTop: "0.5em", minWidth: "8em", marginRight: "1em" }}
       onChange={props.handler}
     >
-      <MenuItem key={"Name"} value={"Name"}>
+      <MenuItem key={FIELD.NAME} value={FIELD.NAME}>
         Name
       </MenuItem>
-      <MenuItem key={"Surname"} value={"Surname"}>
+      <MenuItem key={FIELD.SURNAME} value={FIELD.SURNAME}>
         Surname
       </MenuItem>
-      <MenuItem key={"Phone Number"} value={"Phone Number"}>
+      <MenuItem key={FIELD.PHONENUMBER} value={FIELD.PHONENUMBER}>
         Phone Number
       </MenuItem>
     </TextField>

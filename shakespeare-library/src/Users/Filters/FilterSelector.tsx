@@ -7,10 +7,20 @@ import { User } from "../UsersData";
 import { setFilters } from "../UsersList";
 import { FieldsSelect, ActionsSelect } from "./Selectors";
 
+export const enum FIELD {
+  NAME = "Name",
+  SURNAME = "Surname",
+  PHONENUMBER = "Phone Number",
+}
+
 interface FilterSelector {
   readonly handleClose: () => void;
   readonly filter: () => void;
 }
+
+type StringComparator = {
+  (u: string, s: string): boolean;
+};
 
 export default function FilterSelector(
   props: FilterSelector,
@@ -31,24 +41,28 @@ export default function FilterSelector(
     setValue(e.value);
   };
 
-  const createFilter = () => {
+  const contains: StringComparator = (u: string, s: string): boolean => {
+    return u.includes(s);
+  };
+
+  const startsWith: StringComparator = (u: string, s: string): boolean => {
+    return u.startsWith(s);
+  };
+
+  const createFilter = (): void => {
     if (field === "" || action === "" || value === "") return;
+    let midFilter: StringComparator =
+      action === "contains" ? contains : startsWith;
     let newFilter: Predicate = () => true;
     switch (field) {
-      case "Name":
-        if (action == "contains")
-          newFilter = (u: User) => u.name.includes(value);
-        else newFilter = (u: User) => u.name.startsWith(value);
+      case FIELD.NAME:
+        newFilter = (u: User) => midFilter(u.name, value);
         break;
-      case "Surname":
-        if (action == "contains")
-          newFilter = (u: User) => u.surname.includes(value);
-        else newFilter = (u: User) => u.surname.startsWith(value);
+      case FIELD.SURNAME:
+        newFilter = (u: User) => midFilter(u.surname, value);
         break;
-      case "Phone Number":
-        if (action == "contains")
-          newFilter = (u: User) => u.phoneNumber.includes(value);
-        else newFilter = (u: User) => u.phoneNumber.startsWith(value);
+      case FIELD.PHONENUMBER:
+        newFilter = (u: User) => midFilter(u.phoneNumber, value);
         break;
     }
     setFilters(newFilter);
@@ -59,7 +73,6 @@ export default function FilterSelector(
   return (
     <Fragment>
       <Box sx={{ display: "flex" }}>
-
         <FieldsSelect
           handler={(e) => {
             handleFieldChange(e.target as HTMLInputElement);
@@ -86,7 +99,6 @@ export default function FilterSelector(
             handleValueChange(e.target as HTMLInputElement);
           }}
         ></TextField>
-        
       </Box>
       <Button variant="outlined" onClick={createFilter}>
         Add filter

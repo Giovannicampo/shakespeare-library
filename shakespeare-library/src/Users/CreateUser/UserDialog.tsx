@@ -16,14 +16,11 @@ interface UserDialogProps {
   readonly handleClose: () => void;
 }
 
-const areEmpty = (...strings: string[]): boolean => {
-  for (const s of strings) {
-    if (s === "") return true;
-  }
-  return false;
+const areEmpty = (strings: string[]): boolean => {
+  return strings.some((s) => s === "");
 };
 
-export default function UserDialog(props: UserDialogProps) {
+export default function UserDialog(props: UserDialogProps): React.ReactElement {
   const [name, setName] = React.useState("");
   const [surname, setSurname] = React.useState("");
   const [age, setAge] = React.useState("");
@@ -67,17 +64,17 @@ export default function UserDialog(props: UserDialogProps) {
   };
 
   function handleOnSave() {
-    if (areEmpty(name, surname, phoneNumber, age)) {
+    if (areEmpty([name, surname, phoneNumber, age])) {
       setOpenAlert(true);
       return;
     }
 
     const newUser: User = {
       id: uuidv4(),
-      name: name,
-      surname: surname,
-      age: age,
-      phoneNumber: phoneNumber,
+      name,
+      surname,
+      age,
+      phoneNumber,
       booksIds: [],
     };
 

@@ -18,7 +18,7 @@ function createData(
   return book;
 }
 
-export let rows: Book[] = [
+export const rows: Book[] = [
   createData(0, "Il miglio verde", "Stephen King", "Thriller", true),
   createData(1, "Io, Robot", "Isaac Asimov", "Sci-Fi", true),
   createData(
