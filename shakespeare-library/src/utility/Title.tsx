@@ -12,3 +12,11 @@ export default function Title(props: TitleProps): React.ReactElement {
     </Typography>
   );
 }
+
+export function SubTitle(props: TitleProps): React.ReactElement {
+  return (
+    <Typography component="h2" variant="subtitle1" color="neutral" gutterBottom>
+      {props.children}
+    </Typography>
+  );
+}

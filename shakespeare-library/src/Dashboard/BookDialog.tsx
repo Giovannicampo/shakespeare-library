@@ -11,29 +11,7 @@ import { OPTION } from "./BooksList";
 import saveBookData from "./SaveBookData";
 import deleteBook from "./DeleteBook";
 import { Book } from "./BooksData";
-
-interface TextFieldProps {
-  readonly id: string;
-  readonly label: string;
-  readonly defaultValue: string;
-  readonly handler: React.ChangeEventHandler;
-}
-
-export const CustomTextField = function (props: TextFieldProps): React.ReactElement {
-  return (
-    <TextField
-      autoFocus
-      margin="dense"
-      id={props.id}
-      label={props.label}
-      fullWidth
-      variant="outlined"
-      defaultValue={props.defaultValue}
-      required
-      onChange={props.handler}
-    />
-  );
-};
+import CustomTextField from "../utility/CustomTextField";
 
 interface SelectProps {
   readonly defaultvalue: boolean;

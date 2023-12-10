@@ -1,6 +1,6 @@
 import * as React from "react";
 import Typography from "@mui/material/Typography";
-import Title from "../Title";
+import Title from "../utility/Title";
 import { rows } from "./BooksData";
 
 export default function TotalBooks(): React.ReactElement {

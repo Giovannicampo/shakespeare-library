@@ -51,7 +51,7 @@ export default function FilterSelector(
 
   const createFilter = (): void => {
     if (field === "" || action === "" || value === "") return;
-    let midFilter: StringComparator =
+    const midFilter: StringComparator =
       action === "contains" ? contains : startsWith;
     let newFilter: Predicate = () => true;
     switch (field) {

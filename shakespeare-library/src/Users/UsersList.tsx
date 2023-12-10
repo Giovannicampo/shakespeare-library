@@ -4,7 +4,7 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Title from "../Title";
+import Title from "../utility/Title";
 import "../assets/css/App.css";
 import { users, User } from "./UsersData";
 import { Box, Button } from "@mui/material";
@@ -51,12 +51,12 @@ export default function UsersList(): React.ReactElement {
 
   const handleOpenNewUserDialog = (): void => {
     setOpenNewUSerDialog(true);
-  }
+  };
 
   const handleCloseNewUserDialog = (): void => {
     setOpenNewUSerDialog(false);
-  }
- 
+  };
+
   return (
     <React.Fragment>
       <Title>Users</Title>
@@ -75,9 +75,11 @@ export default function UsersList(): React.ReactElement {
         >
           Reset
         </Button>
-        <Button variant="outlined"
+        <Button
+          variant="outlined"
           sx={{ maxWidth: "10em", marginRight: "0.5em" }}
-          onClick={handleOpenNewUserDialog}>
+          onClick={handleOpenNewUserDialog}
+        >
           Add user
         </Button>
       </Box>
@@ -108,7 +110,10 @@ export default function UsersList(): React.ReactElement {
             </TableRow>
           ))}
         </TableBody>
-        <UserDialog open={openNewUserDialog} handleClose={handleCloseNewUserDialog}></UserDialog>
+        <UserDialog
+          open={openNewUserDialog}
+          handleClose={handleCloseNewUserDialog}
+        ></UserDialog>
       </Table>
     </React.Fragment>
   );

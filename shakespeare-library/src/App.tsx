@@ -8,8 +8,9 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Dashboard from "./Dashboard/Dashboard";
 import Users from "./Users/Users";
+import Prendi from "./Prendi/Prendi";
 
-export const BASE_URL = 'http://localhost:3000';
+export const BASE_URL = "http://localhost:3000";
 
 export const enum CONTEXT {
   DASHBOARD = "Dashboard",
@@ -24,14 +25,15 @@ function App(): ReactElement {
 
   switch (context) {
     case CONTEXT.DASHBOARD:
-      ContextDiv = <Dashboard/>;
+      ContextDiv = <Dashboard />;
       break;
     case CONTEXT.CEDI:
       break;
     case CONTEXT.PRENDI:
+      ContextDiv = <Prendi />;
       break;
     case CONTEXT.UTENTI:
-      ContextDiv = <Users/>;
+      ContextDiv = <Users />;
       break;
   }
 

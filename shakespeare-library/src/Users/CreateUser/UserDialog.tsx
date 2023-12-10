@@ -5,7 +5,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { CustomTextField } from "../../Dashboard/BookDialog";
+import CustomTextField from "../../utility/CustomTextField";
 import { User } from "../UsersData";
 import saveUserData from "./SaveUserData";
 import { v4 as uuidv4 } from "uuid";
@@ -16,7 +16,7 @@ interface UserDialogProps {
   readonly handleClose: () => void;
 }
 
-const areEmpty = (strings: string[]): boolean => {
+const areEmpty = (...strings: string[]): boolean => {
   return strings.some((s) => s === "");
 };
 
@@ -64,7 +64,7 @@ export default function UserDialog(props: UserDialogProps): React.ReactElement {
   };
 
   function handleOnSave() {
-    if (areEmpty([name, surname, phoneNumber, age])) {
+    if (areEmpty(name, surname, phoneNumber, age)) {
       setOpenAlert(true);
       return;
     }
