@@ -14,9 +14,9 @@ export default function saveBookData(book: Book) {
       "X-RapidAPI-Key": "your-api-key",
       "X-RapidAPI-Host": "jokes-by-api-ninjas.p.rapidapi.com",
     },
-    body: JSON.stringify(book)
+    body: JSON.stringify(book),
   })
-  .then(response => response.json())
-  .then(result => console.log(result))
-  .catch(error => console.log(error));
+    .then((response) => response.json())
+    .then((result) => console.log(result))
+    .catch((error) => console.log(error));
 }

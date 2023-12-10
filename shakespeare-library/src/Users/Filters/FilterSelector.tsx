@@ -10,6 +10,7 @@ import { FieldsSelect, ActionsSelect } from "./Selectors";
 export const enum FIELD {
   NAME = "Name",
   SURNAME = "Surname",
+  AGE = "Age",
   PHONENUMBER = "Phone Number",
 }
 
@@ -41,13 +42,11 @@ export default function FilterSelector(
     setValue(e.value);
   };
 
-  const contains: StringComparator = (u: string, s: string): boolean => {
-    return u.includes(s);
-  };
+  const contains: StringComparator = (u: string, s: string): boolean =>
+    u.includes(s);
 
-  const startsWith: StringComparator = (u: string, s: string): boolean => {
-    return u.startsWith(s);
-  };
+  const startsWith: StringComparator = (u: string, s: string): boolean =>
+    u.startsWith(s);
 
   const createFilter = (): void => {
     if (field === "" || action === "" || value === "") return;

@@ -10,6 +10,7 @@ import { User } from "../UsersData";
 import saveUserData from "./SaveUserData";
 import { v4 as uuidv4 } from "uuid";
 import CustomAlert from "./Alert";
+import { FIELD } from "../Filters/FilterSelector";
 
 interface UserDialogProps {
   readonly open: boolean;
@@ -90,32 +91,32 @@ export default function UserDialog(props: UserDialogProps): React.ReactElement {
         <DialogContent>
           <DialogContentText>Add a new user and edit infos.</DialogContentText>
           <CustomTextField
-            id={"name"}
-            label={"Name"}
+            id={FIELD.NAME}
+            label={FIELD.NAME}
             defaultValue={""}
             handler={(e) => {
               handleNameChange(e.target as HTMLInputElement);
             }}
           ></CustomTextField>
           <CustomTextField
-            id={"surname"}
-            label={"Surname"}
+            id={FIELD.SURNAME}
+            label={FIELD.SURNAME}
             defaultValue={""}
             handler={(e) => {
               handleSurnameChange(e.target as HTMLInputElement);
             }}
           ></CustomTextField>
           <CustomTextField
-            id={"age"}
-            label={"Age"}
+            id={FIELD.AGE}
+            label={FIELD.AGE}
             defaultValue={""}
             handler={(e) => {
               handleAgeChange(e.target as HTMLInputElement);
             }}
           ></CustomTextField>
           <CustomTextField
-            id={"phoneNumber"}
-            label={"Phone Number"}
+            id={FIELD.PHONENUMBER}
+            label={FIELD.PHONENUMBER}
             defaultValue={""}
             handler={(e) => {
               handlePhoneNumberChange(e.target as HTMLInputElement);

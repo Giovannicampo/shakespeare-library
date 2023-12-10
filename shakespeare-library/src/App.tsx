@@ -15,9 +15,9 @@ export const BASE_URL = "http://localhost:3000";
 
 export const enum CONTEXT {
   DASHBOARD = "Dashboard",
-  CEDI = "Cedi",
-  PRENDI = "Prendi",
-  UTENTI = "Utenti",
+  CEDI = "Lend",
+  PRENDI = "Take",
+  UTENTI = "User",
 }
 
 function App(): ReactElement {

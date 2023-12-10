@@ -106,7 +106,9 @@ export default function UsersList(): React.ReactElement {
               <TableCell>{localUsers.surname}</TableCell>
               <TableCell>{localUsers.age}</TableCell>
               <TableCell>{localUsers.phoneNumber}</TableCell>
-              <TableCell align="right">{localUsers.booksIds}</TableCell>
+              <TableCell align="right">
+                {localUsers.booksIds.map((id) => `${id} `)}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

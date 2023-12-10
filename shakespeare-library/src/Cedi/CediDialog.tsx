@@ -16,10 +16,9 @@ export default function CediDialog(props: BookProps) {
   const [userId, setUserId] = useState("");
 
   const handleOnSelect = (event: HTMLSelectElement) => {
-    if(event.value === "") return;
-    const userData: string[] = event.value.split(" ");
+    if (event.value === "") return;
     const selectedUser: User = users.filter(
-      (u) => u.name === userData[0] && u.surname === userData[1],
+      (u) => u.name + " " + u.surname === event.value,
     )[0];
     setUserId(selectedUser.id);
   };
