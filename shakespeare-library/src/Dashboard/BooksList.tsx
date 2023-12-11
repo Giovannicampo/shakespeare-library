@@ -18,15 +18,11 @@ export const enum OPTION {
 interface BooksListProps {
   readonly setBook: (row: Book) => void;
   readonly handleClickOpen: () => void;
-  readonly isAvailable: boolean;
 }
 
 let books: Book[] = rows;
 
-export const BooksList = (props: BooksListProps): React.ReactElement => {
-  if(props.isAvailable) {
-    books = rows.filter(r => r.available === true)
-  }
+const BooksList = (props: BooksListProps): React.ReactElement => {
   return (
     <Table size="small">
       <TableHead>
@@ -76,7 +72,7 @@ export default function BooksListForm(): React.ReactElement {
   return (
     <React.Fragment>
       <Title>Books</Title>
-      <BooksList setBook={setBook} handleClickOpen={handleClickOpen} isAvailable={false}/>
+      <BooksList setBook={setBook} handleClickOpen={handleClickOpen}/>
       <BookDialog
         open={open}
         handleClose={handleClose}
