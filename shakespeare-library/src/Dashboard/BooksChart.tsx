@@ -13,13 +13,13 @@ const listGenres = [
 
 function updateList(): void {
   for (const g of listGenres) {
+    g.value = 0;
     g.value += rows.filter((r) => r.genre === g.label).length;
   }
 }
 
-updateList();
-
 export default function BooksChart(): ReactElement {
+  updateList();
   return (
     <Fragment>
       <Title>Pie chart of genres</Title>

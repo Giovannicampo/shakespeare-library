@@ -151,6 +151,8 @@ The filtering process is handled through the use of the custom interface Predica
 
 
 
+> Attention: there are some side-effects related to mock data instead of fetching data from server-side
+
 ------
 
 
