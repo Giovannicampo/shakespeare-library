@@ -26,7 +26,7 @@ export default function CediDialog(props: BookProps) {
   return (
     <Fragment>
       <Dialog open={props.open} onClose={props.handleClose}>
-        <DialogTitle>Book details</DialogTitle>
+        <DialogTitle>User selection</DialogTitle>
         <DialogContent>
           <DialogContentText sx={{ marginBottom: "0.5em" }}>
             Choose which user you want to lend the book to.
