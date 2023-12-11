@@ -6,6 +6,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Title from "../utility/Title";
 import BookDialog from "./BookDialog";
+import TotalBooks from "./TotalBooks";
+import { Grid, Paper } from "@mui/material";
+import BooksChart from "./BooksChart";
 import "../assets/css/App.css";
 import { rows } from "./BooksData";
 import { Book } from "./BooksData";
@@ -71,13 +74,41 @@ export default function BooksListForm(): React.ReactElement {
   };
   return (
     <React.Fragment>
-      <Title>Books</Title>
-      <BooksList setBook={setBook} handleClickOpen={handleClickOpen}/>
-      <BookDialog
-        open={open}
-        handleClose={handleClose}
-        book={currentBook}
-      ></BookDialog>
+      <Grid item xs={12}>
+        <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
+          <Title>Books</Title>
+          <BooksList setBook={setBook} handleClickOpen={handleClickOpen} />
+          <BookDialog
+            open={open}
+            handleClose={handleClose}
+            book={currentBook}
+          ></BookDialog>
+        </Paper>
+      </Grid>
+      <Grid item xs={12} md={4} lg={3}>
+        <Paper
+          sx={{
+            p: 2,
+            display: "flex",
+            flexDirection: "column",
+            height: 120,
+          }}
+        >
+          <TotalBooks />
+        </Paper>
+      </Grid>
+      <Grid item xs={12} md={12} lg={6}>
+        <Paper
+          sx={{
+            p: 2,
+            display: "flex",
+            flexDirection: "column",
+            height: 240,
+          }}
+        >
+          <BooksChart />
+        </Paper>
+      </Grid>
     </React.Fragment>
   );
 }
