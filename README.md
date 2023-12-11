@@ -22,7 +22,7 @@ The application has been designed in order to fulfill all the requirements as be
 - the **Menu**
 - the **Context**
 
-![](pics/Components.png)
+![](shakespeare-library/pics/Components.png)
 
 > Here is the application page divided into the HeaderBar, the Menu and the Context. In this example, the page is set on the Dashboard context, and as shown, it is divided into smaller components such as the BooksList, the BookChart and the TotalBooks.
 
@@ -34,7 +34,7 @@ Let's take a look at some components and their code:
 
 ### BooksList
 
-![](pics/BooksList.png)
+![](shakespeare-library/pics/BooksList.png)
 
  
 
@@ -97,7 +97,7 @@ As shown the list is made up of MUI library components, such as TableHead, Table
 
 ### Filter dialog and selectors
 
-![](pics/FilterDialog.png)
+![](shakespeare-library/pics/FilterDialog.png)
 
 
 
@@ -147,7 +147,7 @@ The filtering process is handled through the use of the custom interface Predica
 
 ### Lend book
 
-![](pics/LendBook.png)
+![](shakespeare-library/pics/LendBook.png)
 
 
 
