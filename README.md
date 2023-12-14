@@ -42,15 +42,11 @@ Let's take a look at some components and their code:
 interface BooksListProps {
   readonly setBook: (row: Book) => void;
   readonly handleClickOpen: () => void;
-  readonly isAvailable: boolean;
 }
 
 let books: Book[] = rows;
 
 export const BooksList = (props: BooksListProps): React.ReactElement => {
-  if(props.isAvailable) {
-    books = rows.filter(r => r.available === true)
-  }
   return (
     <Table size="small">
       <TableHead>
